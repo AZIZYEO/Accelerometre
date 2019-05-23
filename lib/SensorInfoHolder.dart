@@ -385,6 +385,7 @@ class HeartBeat {
 class MotionDetect {
   // type 4
   MotionDetect(this.sensor, this.isInMotion);
+
   SensorInfoHolder sensor;
   String isInMotion;
 
@@ -393,3 +394,4 @@ class MotionDetect {
         ? 'Device in Motion'
         : 'Device not in Motion';
   }
+}
