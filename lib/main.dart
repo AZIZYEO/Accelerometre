@@ -30,16 +30,7 @@ SensorInfoHolder getMeAnInstanceOfSensorInfoHolder(Map<String, String> data) {
       data['vendorName'],
       data['version'],
       data['power'],
-      data['resolution'],
-      data['maxRange'],
-      data['maxDelay'],
-      data['minDelay'],
-      data['reportingMode'],
-      data['isWakeup'],
-      data['isDynamic'],
-      data['highestDirectReportRateValue'],
-      data['fifoMaxEventCount'],
-      data['fifoReservedEventCount']);
+     );
 } // gets an instance of SensorInfoHolder class with required data stored, which is supplied to the function in form of a map/ dictionary
 
 class _SensorMainState extends State<SensorMainHome> {

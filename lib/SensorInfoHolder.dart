@@ -6,7 +6,7 @@ class SensorInfoHolder {
       this.type,
       this.vendorName,
       this.version,
-      this.power,
+     /* this.power,
       this.resolution,
       this.maxRange,
       this.maxDelay,
@@ -15,7 +15,7 @@ class SensorInfoHolder {
       this.isWakeup,
       this.isDynamic,
       this.highestDirectReportRateValue,
-      this.fifoMaxEventCount,
+      this.fifoMaxEventCount,*/
       this.fifoReservedEventCount) {
     type = '${_getTypeToName(type)} ($type)';
   }
@@ -23,7 +23,7 @@ class SensorInfoHolder {
   String type;
   String vendorName;
   String version;
-  String power;
+/*  String power;
   String resolution;
   String maxRange;
   String maxDelay;
@@ -32,7 +32,7 @@ class SensorInfoHolder {
   String isWakeup;
   String isDynamic;
   String highestDirectReportRateValue;
-  String fifoMaxEventCount;
+  String fifoMaxEventCount;*/
   String fifoReservedEventCount;
   String _getTypeToName(String type) {
     return <String, String>{
@@ -87,6 +87,7 @@ class SensorInfoHolder {
           ),
         ],
       ),
+    /*
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -209,7 +210,8 @@ class SensorInfoHolder {
           ),
         ],
       ),
-      Row(
+      */
+          Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
@@ -290,7 +292,7 @@ class Accelerometer {
 }
 
 class Gyroscope {
-  // type
+  // type 2
   Gyroscope(this.sensor, this.angularSpeedAroundX, this.angularSpeedAroundY,
       this.angularSpeedAroundZ);
   SensorInfoHolder sensor;
@@ -343,92 +345,8 @@ class Gyroscope {
   }
 }
 
-class UncalibratedGyroscope {
-  // type 16
-  UncalibratedGyroscope(
-      this.sensor,
-      this.angularSpeedAroundX,
-      this.angularSpeedAroundY,
-      this.angularSpeedAroundZ,
-      this.estimatedDriftAroundX,
-      this.estimatedDriftAroundY,
-      this.estimatedDriftAroundZ);
-  SensorInfoHolder sensor;
-  String angularSpeedAroundX;
-  String angularSpeedAroundY;
-  String angularSpeedAroundZ;
-  String estimatedDriftAroundX;
-  String estimatedDriftAroundY;
-  String estimatedDriftAroundZ;
-  Card getCard() {
-    return Card(
-      // Uncalibrated Gyroscope
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Angular Speed around X'),
-                Text('${this.angularSpeedAroundX} rad/s'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Angular Speed around Y'),
-                Text('${this.angularSpeedAroundY} rad/s'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Angular Speed around Z'),
-                Text('${this.angularSpeedAroundZ} rad/s'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Drift around X'),
-                Text('${this.estimatedDriftAroundX} rad/s'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Drift around Y'),
-                Text('${this.estimatedDriftAroundY} rad/s'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Drift around Z'),
-                Text('${this.estimatedDriftAroundZ} rad/s'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
 class HeartBeat {
-  // type 31
+  // type 3
   HeartBeat(this.sensor, this.confidence);
   SensorInfoHolder sensor;
   String confidence;
@@ -464,445 +382,8 @@ class HeartBeat {
   }
 }
 
-class AmbientLight {
-  // type 5
-  AmbientLight(this.sensor, this.level);
-  SensorInfoHolder sensor;
-  String level;
-  Card getCard() {
-    return Card(
-      // Ambient Light Sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Ambient Light Level'),
-                Text('${this.level} lux'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class AtmosphericPressure {
-  // type 6
-  AtmosphericPressure(this.sensor, this.pressure);
-  SensorInfoHolder sensor;
-  String pressure;
-  Card getCard() {
-    return Card(
-      // Atmospheric Pressure
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Atmospheric Pressure'),
-                Text('${this.pressure} hPa'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class Proximity {
-  // type 8
-  Proximity(this.sensor, this.distance);
-  SensorInfoHolder sensor;
-  String distance;
-  Card getCard() {
-    return Card(
-      // Proximity Sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Distance From Screen'),
-                Text('${this.distance} cm'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class RotationVector {
-  // type 11
-  RotationVector(this.sensor, this.x, this.y, this.z, this.someVal,
-      this.estimatedHeadingAccuracy);
-  SensorInfoHolder sensor;
-  String x;
-  String y;
-  String z;
-  String someVal;
-  String estimatedHeadingAccuracy;
-  Card getCard() {
-    return Card(
-      // Rotation Vector Sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('X * Sin(\u{03b8}/2)'),
-                Text('${this.x}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Y * Sin(\u{03b8}/2)'),
-                Text('${this.y}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Z * Sin(\u{03b8}/2)'),
-                Text('${this.z}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Cos(\u{03b8}/2)'),
-                Text('${this.someVal}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Heading Accuracy'),
-                Text('${this.estimatedHeadingAccuracy} rad'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class GameRotationVector {
-  // type 15
-  GameRotationVector(this.sensor, this.x, this.y, this.z, this.someVal,
-      this.estimatedHeadingAccuracy);
-  SensorInfoHolder sensor;
-  String x;
-  String y;
-  String z;
-  String someVal;
-  String estimatedHeadingAccuracy;
-  Card getCard() {
-    return Card(
-      // Game Rotation Vector Sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('X * Sin(\u{03b8}/2)'),
-                Text('${this.x}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Y * Sin(\u{03b8}/2)'),
-                Text('${this.y}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Z * Sin(\u{03b8}/2)'),
-                Text('${this.z}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Cos(\u{03b8}/2)'),
-                Text('${this.someVal}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Heading Accuracy'),
-                Text('${this.estimatedHeadingAccuracy} rad'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class GeoMagneticRotationVector {
-  // type 20
-  GeoMagneticRotationVector(this.sensor, this.x, this.y, this.z, this.someVal,
-      this.estimatedHeadingAccuracy);
-  SensorInfoHolder sensor;
-  String x;
-  String y;
-  String z;
-  String someVal;
-  String estimatedHeadingAccuracy;
-  Card getCard() {
-    return Card(
-      // Geomagnetic Rotation Vector Sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('X * Sin(\u{03b8}/2)'),
-                Text('${this.x}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Y * Sin(\u{03b8}/2)'),
-                Text('${this.y}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Z * Sin(\u{03b8}/2)'),
-                Text('${this.z}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Cos(\u{03b8}/2)'),
-                Text('${this.someVal}'),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Estimated Heading Accuracy'),
-                Text('${this.estimatedHeadingAccuracy} rad'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class RelativeHumidity {
-  // type 12
-  RelativeHumidity(this.sensor, this.humidity);
-  SensorInfoHolder sensor;
-  String humidity;
-  Card getCard() {
-    return Card(
-      // Relative Humidity
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Relative Air Humidity'),
-                Text('${this.humidity} %'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class AmbientRoomTemperature {
-  // type 13
-  AmbientRoomTemperature(this.sensor, this.temperature);
-  SensorInfoHolder sensor;
-  String temperature;
-  Card getCard() {
-    return Card(
-      // Gravity
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Temperature'),
-                Text('${this.temperature} C'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class LowLatencyOffBodyDetect {
-  // type 34
-  LowLatencyOffBodyDetect(this.sensor, this.offBodyState);
-  SensorInfoHolder sensor;
-  String offBodyState;
-
-  String getStateText() {
-    return this.offBodyState == '1.0' ? 'Device on-body' : 'Device off-body';
-  }
-
-  Card getCard() {
-    return Card(
-      // Low latency off body detect sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Off Body State'),
-                Text('${getStateText()}'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
 class MotionDetect {
-  // type 30
+  // type 4
   MotionDetect(this.sensor, this.isInMotion);
   SensorInfoHolder sensor;
   String isInMotion;
@@ -912,79 +393,3 @@ class MotionDetect {
         ? 'Device in Motion'
         : 'Device not in Motion';
   }
-
-  Card getCard() {
-    return Card(
-      // Motion detect sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Motion Detection'),
-                Text('${getStateText()}'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
-
-class StationaryDetect {
-  // type 29
-  StationaryDetect(this.sensor, this.isImmobile);
-  SensorInfoHolder sensor;
-  String isImmobile;
-
-  String getStateText() {
-    return this.isImmobile == '1.0'
-        ? 'Device in Stationary State'
-        : 'Device not in Stationary State';
-  }
-
-  Card getCard() {
-    return Card(
-      // Motion detect sensor
-      margin: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 4.0, right: 4.0),
-      elevation: 8.0,
-      child: Container(
-        child: Column(
-          children: this.sensor.appendThem([
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Motion Detection'),
-                Text('${getStateText()}'),
-              ],
-            ),
-          ]),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(
-            color: Colors.white,
-            width: 0.7,
-            style: BorderStyle.solid,
-          ),
-        ),
-        padding:
-            EdgeInsets.only(left: 10.0, right: 10.0, top: 12.0, bottom: 12.0),
-      ),
-    );
-  }
-}
